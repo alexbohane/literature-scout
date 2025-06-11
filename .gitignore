@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+.owkin_venv/
+env/
+venv/
+
+# Streamlit
+.streamlit/
+
+# Mac system files
+.DS_Store
+
+# Docker
+*.log
+
+# VSCode
+.vscode/
+
+# Jupyter (if any)
+.ipynb_checkpoints/
