@@ -12,10 +12,11 @@ def europe_pmc_api_call(query: str, max_results=1000) -> List[Dict]:
     try:
         while len(papers) < max_results:
             params = {
-                "query": f'(TITLE_ABS:("{query}") OR MESH_HEADING:("{query}")) AND PUB_YEAR:[2000 TO 2026] AND SRC:MED',
+                "query": f'(TITLE_ABS:("{query}") OR MESH_HEADING:("{query}")) AND PUB_YEAR:[2020 TO 2026] AND SRC:MED',
                 "format": "json",
                 "pageSize": page_size,
                 "cursorMark": cursor_mark,
+                "resultType": "core",
                 "sort": "CITED desc"
             }
 
@@ -45,7 +46,8 @@ def europe_pmc_api_call(query: str, max_results=1000) -> List[Dict]:
                         "journal": result.get("journalTitle", ""),
                         "doi": doi,
                         "cited_by_count": int(result.get("citedByCount", "0")),
-                        "mesh_terms": mesh_terms
+                        # "mesh_terms": mesh_terms,
+                        "author_string": result.get("authorString", "")
                     })
                     if len(papers) >= max_results:
                         break
